@@ -49,6 +49,7 @@ const getPokemon = async (pokemon) => {
     try {
         const pkmn = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
 
+        // data containers
         info = pkmn.data
         pokedexNumber = info.id
         console.log(info)
@@ -77,7 +78,6 @@ const getPokemon = async (pokemon) => {
         if (pkmnTypes.length > 1) {
             secondType = capitalize(pkmnTypes[1])
             changeTypeColor(colors[firstType], colors[secondType])
-            // type2.style.backgroundColor = colors[secondType]
             type2.innerText = `${secondType}`
             type2.style.padding = '20px'
         }
@@ -88,26 +88,13 @@ const getPokemon = async (pokemon) => {
 
         type1.innerText = `${firstType}`
         type1.style.padding = '20px'
-       
-        
-
-        // type1.style.backgroundColor = colors[firstType]
-       
-        
-
-
+              
         pkmnPowers(pkmnAbilities, pkmnHidden)
-
 
         pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves)
         tableHeadings([lU, tB], ['Level-Up','Teachable'])
         loadMoveTable(pkmnLvlMoves, lM)
         loadMoveTable(pkmnOtherMoves, tM)
-        // addMoves(pkmnLvlMoves, 'Level-Up Moves', movesLvl)
-
-        // addMoves(pkmnOtherMoves, 'Learnable Moves', learnable)
-
-
 
     }
     catch (e) {
@@ -117,52 +104,6 @@ const getPokemon = async (pokemon) => {
         container.append(error)
     }
 }
-
-// How to fetch without axios
-// fetch("https://pokeapi.co/api/v2/pokemon/4")
-//     .then((res) => {
-//         console.log('RESOLVED', res)
-//         // .json gets the actual data, whereas without it,
-//         // the process ends when headers recieved
-//         // so not all data will be stored in variable
-
-//         // return sends it to next .then
-//         return res.json()
-
-//     })
-//     .then(info => {
-//         console.log(info)
-//         pkmnAbilities = []
-//         pkmnHidden = []
-//         pkmnTypes = []
-//         pkmnMoves = []
-
-//         // an Array for the abilities
-//         abilityArr = info.abilities
-//         typeArr = info.types
-//         movesArr = info.moves
-
-//         pkmnAttacks(movesArr, pkmnMoves)
-//         pkmnPowers(pkmnAbilities, pkmnHidden)
-
-
-//         for (let ty of typeArr) {
-//             pkmnTypes.push(`${ty.type.name}`)
-//         }
-
-//         console.log(`${info.name}`)
-//         console.log(`Type: ${pkmnTypes.join('/')}`)
-//         console.log(`Ability: ${pkmnAbilities.join(", ")}`)
-
-//         console.log(`Hidden Ability: ${pkmnHidden.join(", ")}`)
-
-//         console.log('Learnable Moves')
-
-//         console.log(pkmnMoves)
-//     })
-//     .catch((e) => {
-//         console.log('ERROR', e)
-//     })
 
 // filters pokemon abilities from regular to hidden
 // prints out both if exists
@@ -183,10 +124,6 @@ function pkmnPowers(pkmnAbilities, pkmnHidden) {
         console.log(`Hidden Ability: ${pkmnHidden.join(", ")}`)
     }
 }
-
-// appends pokemon moves based on lvl up or learnable
-// iterates through objects in move array of pokemonData retreived form http
-
 
 // loads move into respective table
 // also fetches the move's type
@@ -209,6 +146,7 @@ async function loadMoveTable(moveData, table) {
     }
 }
 
+// pushes pokemon attaks to array
 function pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves) {
 
     for (let mv of movesArr) {
@@ -238,8 +176,8 @@ function pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves) {
 
 }
 
+// gets pictures of pokemon
 function getSprites(pokedexNumber, pokemon) {
-    // const imageContainer = document.createElement('div')
     const imageContainer = document.createElement('div')
     const mainImage = document.createElement('figure')
     const pkmnName = document.createElement('figcaption')
@@ -259,11 +197,6 @@ function getSprites(pokedexNumber, pokemon) {
     defaultSprite.src = pokemon.sprites.front_default
     shinySprite.src = pokemon.sprites.front_shiny
 
-    // mainImage.style.height = '500px'
-    // mainImage.style.width = '100%'
-
-    // pkmnImage.style.width = '500px'
-    // pkmnImage.style.height = '500px'
     pkmnImage.style.objectFit = 'cover'
 
     mainImage.append(pkmnImage, pkmnName)
@@ -274,8 +207,7 @@ function getSprites(pokedexNumber, pokemon) {
     pixel2.append(shinySprite)
 
     pkmnImage.classList.add('art')
-    // pkmnImage.style.width = '500px'
-    // pkmnImage.style.height = '500px'
+
     pixel1.classList.add('spr1')
     pixel2.classList.add('spr2')
 
@@ -291,10 +223,12 @@ function getSprites(pokedexNumber, pokemon) {
     spriteContainer.append(imageContainer)
 }
 
+// capitalizes pokemon name
 function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.substring(1)
 }
 
+// gets pokemon's stats and changes innerText
 function getStats(sts, statsTitle) {
     const title = document.createElement('h2')
     title.innerText = statsTitle
@@ -314,10 +248,12 @@ function getStats(sts, statsTitle) {
 
 }
 
+// changes color of background to pokemon type
 function changeTypeColor(color1, color2) {
     container.style.backgroundImage = `linear-gradient(37deg, ${color1} 50%, ${color2} 50%)`
 }
 
+// dynamically updates table for moves
 function tableHeadings(head, what) {
     head[0].innerHTML = what[0]
     head[1].innerHTML = what[1]
@@ -334,6 +270,7 @@ function tableHeadings(head, what) {
 
 }
 
+// removes everything for each new search
 function removeStuff(){
     if (container) {
         $(container).empty()
@@ -352,8 +289,3 @@ function removeStuff(){
         tB.innerText =''
     }
 }
-// // add header
-// const getThing = async () => {
-//     const config = {header: {Accept: 'applications.json'}}
-//     const res = await axios.get('adkjgagkadnvknadknv', config)
-// }
