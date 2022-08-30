@@ -1,0 +1,264 @@
+html {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+#container {
+    width: 75%;
+    height: 500px;
+    padding: 40px 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 300%;
+    transition: 1s;
+    animation: pkmn-Back 5s infinite alternate;
+    animation-play-state: paused;
+    /* background-position: left; */
+}
+
+#container:hover {
+    transition: 1s;
+    transform: scale(.95);
+    animation: pkmn-Back 5s infinite alternate;
+}
+
+
+#based  {
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes pkmn-Back {
+    0%{
+        background-position: left;
+    }
+    50% {
+        background-position: center
+    }
+    100%{
+        background-position: right;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.art {
+    animation: fadeIn 2s;
+}
+
+body {
+    background-color: rgb(37, 36, 34);
+}
+
+figcaption {
+    background-color: rgb(241, 250, 238, .4);
+    width: fit-content;
+    border-radius: 30px;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 30px;
+    /* font-family: 'Rubik Marker Hatch', cursive; */
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+/* table data and table head */
+td, th {
+    border: 1px solid white;
+    padding: 5px;
+}
+/* makes no gap between headers */
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+/* setting font wiehgt for table header */
+th {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: black;
+}
+tr {
+    transition: .2s;
+}
+
+tr:hover {
+    background-color: rgb(87, 18, 18);
+    transition: .2s;
+}
+
+#tableDiv {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+#tableDivTM {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+#searchDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#searchPokemon {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    transition: .5s;
+}
+
+#searchPokemon input {
+    display: flex;
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: aliceblue;
+    transition: .5s;
+
+}
+
+#icon {
+    width: 40px;
+    height: 40px;
+    
+    border: 0;
+}
+
+#searchPokemon button {
+    background-color: rgb(240, 248, 255);
+    border-radius: 60%;
+    padding: 5px 7px;
+    border: 0;
+    transition: .5s;
+    
+}
+
+::placeholder {
+    color: rgb(240, 248, 255);
+}
+
+#searchPokemon:hover,  #searchPokemon:focus{
+    background-color: aliceblue;
+    transition: .5s;
+}
+
+#searchPokemon:hover input, #searchPokemon:focus input{ 
+    color: black;
+    transition: .5s;
+}
+
+#searchPokemon:hover::placeholder, #searchPokemon:focus::placeholder{
+    color: black;
+    transition: .5s;
+}
+
+#searchPokemon:hover button, #searchPokemon:focus button{
+    transform: rotate(20deg);
+    transition: .5s;
+}
+
+
+
+#typeDiv {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+}
+
+#statsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#stats {
+    width: 30%;
+    /* display: flex;
+    justify-items: flex-end center; */
+    
+}
+li {
+    list-style-type: none;
+    border-bottom: solid rgb(240, 248, 255, .2);
+    margin: 10px;
+    text-align: left;
+}
+
+.sPokemon {
+    display: flex;
+    justify-content: center;
+    /* align-items:flex-start center; */
+}
+
+@media (max-width: 600px) {
+    #container {
+        width: 400px;
+        background-size: 600%;
+    }
+    .art {
+        width: 400px;
+        height: 400px;
+        /* object-fit: cover; */
+        /* object-fit: contain;*/
+    }
+    #stats {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    #spriteContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 600px) {
+    .art {
+        width: 500px;
+
+    }
+}
+
+@media (max-width: 500px) {
+    #container {
+        width: 300px;
+        height: 400px;
+    }
+    .art {
+        width: 300px;
+        height: 300px;
+
+    }
+}
+
+#lvl-Up, #teach {
+    text-align: center;
+}

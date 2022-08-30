@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik+Marker+Hatch&display=swap"
+        rel="stylesheet">
+    <title>Fetch</title>
+</head>
+
+<body>
+    <!-- <h1>Fetch</h1> -->
+    <div id="searchDiv">
+        <form id="searchPokemon">
+            <!-- name= gives input a name -->
+            <input type="text" placeholder="Search..." name="query" id="input">
+            <button type="submit"><img src="images/search.png" id="icon"></button>
+        </form>
+    </div>
+    <div id="typeDiv">
+        <h2 id="type1"></h2>
+        <h2 id="type2"></h2>
+    </div>
+    <div id="based">
+        <div id="container"></div>
+    </div>
+    <div id="statsDiv">
+        <ul id="stats"></ul>
+    </div>
+    <div id="spriteContainer"></div>
+    <h2 id="lvl-Up"></h2>
+    <div id="tableDiv">
+        <table id="learnableMoves">
+            <thead>
+                <tr class="trHeading">
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <h2 id="teach"></h2>
+    <div id="tableDivTM">
+        <table id="teachableMoves">
+            <thead>
+                <tr class="trHeading">
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
