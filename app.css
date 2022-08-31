@@ -19,6 +19,11 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+#title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2%;
+}
 
 html {
     font-family: 'Roboto', sans-serif;
@@ -210,8 +215,8 @@ tr:hover {
 
 #typeDiv {
     display: flex;
-    justify-content: space-around;
-    /* align-items: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 #statsDiv {
