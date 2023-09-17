@@ -9,6 +9,8 @@ A search engine that allows one to see the stats and moves of a Pokemon
 
 ![A picture of Garchomp](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Garchomp.png)
 
+![NotFound](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/NotFound.png)
+
 # Pokemon Info
 - The website will display the Pokemon type, stats, and moves it can learn.
 - The idea was to create a minimalist website so that you can access information fast
