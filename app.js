@@ -59,6 +59,7 @@ const getPokemon = async (pokemon) => {
         pkmnLvlMoves = []
         pkmnOtherMoves = []
         pkmnStats = []
+        movesArr = []
 
         // an Array for the abilities
         abilityArr = info.abilities
@@ -133,10 +134,39 @@ async function loadMoveTable(moveData, table) {
         const tableBody = document.createElement('tbody')
         let moveHTML = ''
         // table row with move name data nd move lvl data
-        for (let move of moveData) {
-            const mvType = await axios.get(`https://pokeapi.co/api/v2/move/${move.name}/`)
-            moveHTML += `<tr><td>${mvType.data.type.name}</td><td>${move.name}</td><td>${move.lvl}</td></tr>`
-        }
+
+        // loads move data into a table row
+        const loadMoveIntoRow = async (move) => {
+            const mvType = await axios.get(`https://pokeapi.co/api/v2/move/${move.name}/`);
+            return `<tr><td>${mvType.data.type.name}</td><td>${move.name}</td><td>${move.lvl}</td></tr>`;
+        };
+
+        // gets all trs
+        const promises = moveData.map(loadMoveIntoRow);
+
+        // Promise.all used to make alg more effecient
+        // awaits all promises concurrently
+        const moveRows = await Promise.all(promises);
+
+        moveHTML = moveRows.join('');
+        tableBody.innerHTML = moveHTML;
+        table.append(tableBody);
+
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Marking row as loaded
+                    entry.target.classList.add('loaded');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Observe each table row for lazy loading
+        tableBody.querySelectorAll('tr').forEach((row) => {
+            observer.observe(row);
+        });
 
         tableBody.innerHTML = moveHTML
         table.append(tableBody)
@@ -148,6 +178,7 @@ async function loadMoveTable(moveData, table) {
 
 // pushes pokemon attaks to array
 function pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves) {
+
 
     for (let mv of movesArr) {
         object = { name: mv.move.name, lvl: mv.version_group_details[0].level_learned_at }
@@ -166,18 +197,27 @@ function pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves) {
         pkmnLvlMoves.sort((a, b) => {
             return a.lvl - b.lvl
         })
-        console.log(pkmnLvlMoves)
-    }
-
-    console.log('Learnable Moves:')
-    if (pkmnOtherMoves.length > 0) {
-        console.log(pkmnOtherMoves)
     }
 
 }
 
+function getHdImage(pokedexNumber) {
+
+    pokedexNumberString = pokedexNumber.toString()
+
+    while (pokedexNumberString.length < 3) {
+        pokedexNumberString = '0' + pokedexNumber
+    }
+
+
+
+    const hdImage = `https://www.serebii.net/pokemon/art/${pokedexNumberString}.png`
+    return hdImage
+}
+
 // gets pictures of pokemon
 function getSprites(pokedexNumber, pokemon) {
+    console.log(pokemon)
     const imageContainer = document.createElement('div')
     const mainImage = document.createElement('figure')
     const pkmnName = document.createElement('figcaption')
@@ -185,7 +225,9 @@ function getSprites(pokedexNumber, pokemon) {
     const pixel2 = document.createElement('figure')
 
 
-    const hdImage = `https://pokemon.snowflakedev.org/img/${pokedexNumber}.png`
+    // const hdImage = `https://pokemon.snowflakedev.org/img/${pokedexNumber}.png`
+    console.log(pokedexNumber)
+    const hdImage = getHdImage(pokedexNumber)
     const pkmnImage = document.createElement('img')
     const defaultSprite = document.createElement('img')
     const shinySprite = document.createElement('img')

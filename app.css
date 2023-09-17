@@ -45,10 +45,14 @@ html {
     /* background-position: left; */
 }
 
+#container{
+    animation: pkmn-Back 5s infinite alternate;
+}
+
 #container:hover {
     transition: 1s;
     transform: scale(.95);
-    animation: pkmn-Back 5s infinite alternate;
+
 }
 
 
@@ -220,6 +224,7 @@ tr:hover {
 }
 
 #statsDiv {
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
