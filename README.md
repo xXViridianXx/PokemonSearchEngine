@@ -1,6 +1,6 @@
 # PokemonSearchEngine
 - A search engine that allows one to see the stats and moves of a Pokemon
-- Link: "https://pkmnsearch.netlify.app"
+- Link: https://pkmnsearch.netlify.app
 
 ![Search Bar Picture](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/SearchPicture.png)
 
