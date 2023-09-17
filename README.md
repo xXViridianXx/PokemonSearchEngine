@@ -15,4 +15,4 @@ The idea was to create a minimalist website so that you can access information f
 
 ![Picture of stats and sprites](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Stats.png)
 
-![A picture of Garchomp]([https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Garchomp.png](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Moves.png))
+![A picture of Garchomp](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Garchomp.png](https://github.com/xXViridianXx/PokemonSearchEngine/blob/main/images/Moves.png)
