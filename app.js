@@ -65,6 +65,8 @@ const getPokemon = async (pokemon) => {
         abilityArr = info.abilities
         typeArr = info.types
         movesArr = info.moves
+        console.log('hello')
+
 
         getSprites(pokedexNumber, info)
         getStats(info.stats, 'Stats')
@@ -203,12 +205,15 @@ function pkmnAttacks(movesArr, pkmnLvlMoves, pkmnOtherMoves) {
 
 function getHdImage(pokedexNumber) {
 
+    
     pokedexNumberString = pokedexNumber.toString()
 
     while (pokedexNumberString.length < 3) {
-        pokedexNumberString = '0' + pokedexNumber
+        console.log(pokedexNumberString)
+        pokedexNumberString = '0' + pokedexNumberString
     }
 
+   
 
     // const hdImage = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
     const hdImage = `https://www.serebii.net/pokemon/art/${pokedexNumberString}.png`
