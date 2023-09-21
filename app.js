@@ -210,7 +210,7 @@ function getHdImage(pokedexNumber) {
     }
 
 
-
+    // const hdImage = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
     const hdImage = `https://www.serebii.net/pokemon/art/${pokedexNumberString}.png`
     return hdImage
 }
@@ -239,7 +239,7 @@ function getSprites(pokedexNumber, pokemon) {
     defaultSprite.src = pokemon.sprites.front_default
     shinySprite.src = pokemon.sprites.front_shiny
 
-    pkmnImage.style.objectFit = 'cover'
+    pkmnImage.style.objectFit = 'contain'
 
     mainImage.append(pkmnImage, pkmnName)
 
@@ -316,6 +316,7 @@ function tableHeadings(head, what) {
 function removeStuff(){
     if (container) {
         $(container).empty()
+        changeTypeColor('rgb(37, 36, 34)', 'rgb(37, 36, 34)')
         $(movesLvl).empty()
         $(learnable).empty()
         $(stats).empty()

@@ -61,6 +61,7 @@ html {
     justify-content: center;
 }
 
+
 @keyframes pkmn-Back {
     0%{
         background-position: left;
